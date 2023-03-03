@@ -1,0 +1,4 @@
+{
+  port: ":50051",
+  db_url: "postgres://postgres:1234@localhost:5432/PlaylistService"
+}

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+package pb;
+
+service Playlist {
+  rpc AddSong(AddRequest) returns (PlaylistResponse) {}
+  rpc DeleteSong(DeleteSongRequest) returns (PlaylistResponse) {}
+  rpc PlaySong(Empty) returns (SongStats) {}
+  rpc PauseSong(Empty) returns (SongStats) {}
+  rpc Next(Empty) returns (SongStats) {}
+  rpc Prev(Empty) returns (SongStats) {}
+  rpc Status(Empty) returns (SongStats) {}
+}
+
+message SongStats {
+  string name = 1;
+  string time = 2;
+  string status = 3;
+}
+
+message Song {
+  string name = 1;
+  string duration = 2;
+}
+message PlaylistResponse {
+  repeated Song Playlist = 1;
+}
+message AddRequest {
+  string name = 1;
+  string time = 2;
+}
+
+message DeleteSongRequest {
+  string name = 1;
+}
+
+message Empty {
+}
